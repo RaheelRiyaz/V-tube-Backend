@@ -68,7 +68,7 @@ namespace V_Tube.Persisitence.Repositories
              });
         }
 
-        public async Task<T?> FIndOneAsync(Guid id)
+        public async Task<T?> FindOneAsync(Guid id)
         {
             return await db_set.FindAsync(id);
         }

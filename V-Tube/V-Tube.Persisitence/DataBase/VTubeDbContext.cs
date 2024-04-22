@@ -20,6 +20,10 @@ namespace V_Tube.Persisitence.DataBase
 
         #region Database Tables
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Channel> Channels { get; set; } = null!;
+        public DbSet<PlayList> PlayLists { get; set; } = null!;
+        public DbSet<Video> Videos { get; set; } = null!;
+        public DbSet<Subscriber> Subscribers { get; set; } = null!;
         #endregion Database Tables
     }
 }

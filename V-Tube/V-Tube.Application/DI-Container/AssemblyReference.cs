@@ -14,6 +14,9 @@ namespace V_Tube.Application.DI_Container
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IChannelService, ChannelService>();
+            services.AddScoped<IPlaylistService, PlaylistService>();
+            services.AddScoped<IVideosService, VideosService>();
             return services;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using V_Tube.Api.Middlewares;
 
 namespace V_Tube.Api
 {
@@ -28,8 +29,7 @@ namespace V_Tube.Api
                 };
             });
 
-            //services.Configure<CloudinaryInstance>(configuration.GetSection("Cloudinary"));
-
+            services.AddExceptionHandler<GlobalExceptionMiddleware>();
             services.AddHttpContextAccessor();
             return services;
         }

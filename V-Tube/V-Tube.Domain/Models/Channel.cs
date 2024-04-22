@@ -11,6 +11,7 @@ namespace V_Tube.Domain.Models
     {
         public string Name { get; set; } = null!;
         public string Handle { get; set; } = null!;
+        public string Description { get; set; } = null!;
         public string ProfileUrl { get; set; } = null!;
 
 

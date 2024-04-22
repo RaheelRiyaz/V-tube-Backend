@@ -11,6 +11,7 @@ namespace V_Tube.Application.Abstractions.IServices
     public interface IUserService 
     {
         Task<APIResponse<int>> Signup(UserRequest model);
+        Task<APIResponse<int>> Logout();
         Task<APIResponse<LoginResponse>> Login(UserRequest model);
     }
 }

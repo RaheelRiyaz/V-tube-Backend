@@ -15,7 +15,6 @@ namespace V_Tube.Domain.Models
 
 
 
-
         #region Navigational Properties
         [ForeignKey(nameof(ChannelId))]
         public Channel Channel { get; set; } = null!;

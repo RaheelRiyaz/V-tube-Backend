@@ -22,6 +22,10 @@ namespace V_Tube.Persisitence.DI_Container
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IChannelRepository, ChannelRepository>();
+            services.AddScoped<IPlaylistRepository, PlaylistRepository>();
+            services.AddScoped<ISubsribeRepository, SubsribeRepository>();
+            services.AddScoped<IVideosRepository, VideosRepository>();
             return services;
         }
     }

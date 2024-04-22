@@ -12,7 +12,7 @@ using V_Tube.Domain.Models;
 
 namespace V_Tube.Application.Services
 {
-    public class UserService(IUserRepository repository,ITokenService service) : IUserService
+    public class UserService(IUserRepository repository,ITokenService service,IContextService contextService) : IUserService
     {
         public async Task<APIResponse<LoginResponse>> Login(UserRequest model)
         {
@@ -32,6 +32,23 @@ namespace V_Tube.Application.Services
             var accessToken = service.GenerateAccessToken(user);
 
             return APIResponse<LoginResponse>.SuccessResponse(new LoginResponse(accessToken,user.RefreshToken),"Logged in successfully");
+        }
+
+        public async Task<APIResponse<int>> Logout()
+        {
+            var user = await repository.FindOneAsync(contextService.GetContextId());
+
+            if (user is null)
+                return APIResponse<int>.ErrorResponse("User does not exist");
+
+            user.RefreshToken = string.Empty;
+
+            var res = await repository.UpdateAsync(user);
+
+            if (res > 0)
+                return APIResponse<int>.SuccessResponse(res, "User logged out successfully");
+
+            return APIResponse<int>.ErrorResponse();
         }
 
         public async Task<APIResponse<int>> Signup(UserRequest model)

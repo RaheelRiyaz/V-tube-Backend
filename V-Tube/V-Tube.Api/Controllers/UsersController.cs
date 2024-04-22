@@ -18,5 +18,10 @@ namespace V_Tube.Api.Controllers
         [HttpPost("login")]
         public async Task<APIResponse<LoginResponse>> Login(UserRequest model) =>
             await service.Login(model);
+
+
+        [HttpGet("logout")]
+        public async Task<APIResponse<int>> Logout() =>
+            await service.Logout();
     }
 }

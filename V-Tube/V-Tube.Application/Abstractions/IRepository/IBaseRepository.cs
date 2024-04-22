@@ -10,7 +10,7 @@ namespace V_Tube.Application.Abstractions.IServices
     public interface IBaseRepository<T>
     {
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T?> FIndOneAsync(Guid id);
+        Task<T?> FindOneAsync(Guid id);
         Task<T?> FindOneAsync(Expression<Func<T,bool>> expression);
         Task<T?> FirstOrDefaultAsync(Expression<Func<T,bool>> expression);
         Task<IQueryable<T>> FilterAsync(Expression<Func<T,bool>> expression);

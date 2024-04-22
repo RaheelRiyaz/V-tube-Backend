@@ -11,6 +11,7 @@ namespace V_Tube.Domain.Models
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
         public string RefreshToken { get; set; } = null!;
-        public DateTime RefreshExpiry { get; set; }
+        public string? ResetCode { get; set; } = null!;
+        public DateTime? ResetExpiry { get; set; }
     }
 }
