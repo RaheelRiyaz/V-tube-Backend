@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\V-Tube.Api.props" />
+</Project>
