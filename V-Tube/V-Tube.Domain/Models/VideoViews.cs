@@ -16,11 +16,12 @@ namespace V_Tube.Domain.Models
 
 
 
+
         #region Navigational Properties
-        [ForeignKey(nameof(VideoId))]
+       /* [ForeignKey(nameof(VideoId))]
         public Video Video { get; set; } = null!;
 
-        [ForeignKey(nameof(UserId))]
+        [ForeignKey(nameof(UserId))]*/
         public User User { get; set; } = null!;
         #endregion Navigational Properties
 

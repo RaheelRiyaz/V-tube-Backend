@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "5qNm4pJP3abFRIQ/seGf0kijQ2JL1rTMKBmk3qJC8swGliUFsh1S/X71VNpfqYX3Dm5rH+0BtUlQ+gG+zEdkig==",
+  "dgSpecHash": "GjSUmGgKM7swQ0Vuyar2n3PAzBnrmYSt5/NZuftaxaUZ6uekrTALYvSRuJFp4yYj3OHC5LFOJJov56leCNbNjw==",
   "success": true,
   "projectFilePath": "D:\\localRepository\\V-tube-Backend\\V-Tube\\V-Tube.Application\\V-Tube.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\EliteBook\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
+    "C:\\Users\\EliteBook\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\EliteBook\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\EliteBook\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.1\\microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\EliteBook\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\EliteBook\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\EliteBook\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\EliteBook\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

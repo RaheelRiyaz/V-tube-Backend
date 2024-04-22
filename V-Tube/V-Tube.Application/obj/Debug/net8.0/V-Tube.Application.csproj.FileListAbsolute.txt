@@ -10,3 +10,7 @@ D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\obj\Debug\net8.0\V-T
 D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\obj\Debug\net8.0\refint\V-Tube.Application.dll
 D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\obj\Debug\net8.0\V-Tube.Application.pdb
 D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\obj\Debug\net8.0\ref\V-Tube.Application.dll
+D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\obj\Debug\net8.0\V-Tube.Application.csproj.AssemblyReference.cache
+D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\bin\Debug\net8.0\V-Tube.Domain.dll
+D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\bin\Debug\net8.0\V-Tube.Domain.pdb
+D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Application\obj\Debug\net8.0\V-Tube.Application.csproj.CopyComplete

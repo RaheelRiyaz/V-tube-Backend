@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using V_Tube.Application.Abstractions.IRepository;
 using V_Tube.Persisitence.DataBase;
+using V_Tube.Persisitence.Repositories;
 
 namespace V_Tube.Persisitence.DI_Container
 {
@@ -19,6 +21,7 @@ namespace V_Tube.Persisitence.DI_Container
                 options.UseSqlServer(configuration.GetConnectionString(nameof(VTubeDbContext)));
             });
 
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

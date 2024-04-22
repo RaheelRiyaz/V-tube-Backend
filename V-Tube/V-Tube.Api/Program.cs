@@ -1,3 +1,6 @@
+using V_Tube.Api;
+using V_Tube.Application.DI_Container;
+using V_Tube.Infrastructure.DI_Container;
 using V_Tube.Persisitence.DI_Container;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddPersisitenceServices(builder.Configuration);
+builder.Services.AddApiServices(builder.Configuration)
+    .AddPersisitenceServices(builder.Configuration)
+    .AddInfraStructureServices().
+    AddApplicationServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
