@@ -21,6 +21,7 @@ namespace V_Tube.Infrastructure.Services
                 Subject = new ClaimsIdentity(new List<Claim>
                 {
                     new Claim("Id",model.Id.ToString()),
+                    new Claim("UserName", model.UserName.ToString()),
                     new Claim("Email", model.Email.ToString()),
 
                 }),

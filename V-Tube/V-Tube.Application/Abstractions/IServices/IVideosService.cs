@@ -12,5 +12,6 @@ namespace V_Tube.Application.Abstractions.IServices
     public interface IVideosService
     {
         Task<APIResponse<int>> UploadVideo(VideoRequest model);
+        Task<APIResponse<IEnumerable<VideoDisplayResponse>>> FetchDisplayVideos(VideoFilter model);
     }
 }

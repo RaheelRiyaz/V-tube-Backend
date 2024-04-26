@@ -16,7 +16,7 @@ namespace V_Tube.Domain.Models
         public string Description { get; set; } = null!;
         public string Thumbnail { get; set; } = null!;
         public bool IsPublished { get; set; } = true;
-        public double Duration { get; set; }
+        public int Duration { get; set; }
 
 
 

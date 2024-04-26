@@ -53,17 +53,22 @@ namespace V_Tube.Application.Services
 
         public async Task<APIResponse<int>> Signup(UserRequest model)
         {
-            if (String.IsNullOrEmpty(model.Email.Trim()) || String.IsNullOrEmpty(model.Password.Trim()))
-                return APIResponse<int>.ErrorResponse("Username or Password is required");
+            if (
+                string.IsNullOrEmpty(model.Email.Trim()) ||
+                string.IsNullOrEmpty(model.UserName.Trim()) || 
+                string.IsNullOrEmpty(model.Password.Trim())
+                )
+                return APIResponse<int>.ErrorResponse("Username ,email and Password is required");
 
 
-            var isEmailTaken = await repository.ExistsAsync(_ => _.Email == model.Email);
+            var isEmailOrUsernameTaken = await repository.ExistsAsync(_ => _.Email == model.Email || _.UserName == model.UserName);
 
-            if (isEmailTaken)
-                return APIResponse<int>.ErrorResponse("Email is already taken");
+            if (isEmailOrUsernameTaken)
+                return APIResponse<int>.ErrorResponse("Username or Email is already taken");
 
             var user = new User
             {
+                UserName = model.UserName,
                 Email = model.Email,
                 Password = AppEncryption.HashPassword(model.Password),
             };

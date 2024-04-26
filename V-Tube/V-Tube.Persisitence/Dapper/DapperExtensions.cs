@@ -8,7 +8,10 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using V_Tube.Application.DTO;
+using V_Tube.Domain.Models;
 using V_Tube.Persisitence.DataBase;
+using V_Tube.Persisitence.Repositories;
 
 namespace V_Tube.Persisitence.LinqMethods
 {
@@ -16,19 +19,17 @@ namespace V_Tube.Persisitence.LinqMethods
     {
         public async static Task<IEnumerable<T>> QueryAsync<T>
             (
-            this DbContext context,
+            this DbContext dbContext,
             string sql,
-            Object? param = default,
-            IDbTransaction? transaction = default,
+            object? param = default,
+            DbTransaction? transaction = default,
             int? commandTimeout = default,
             CommandType commandType = CommandType.Text
             )
         {
-            using SqlConnection con = new SqlConnection(context.Database.GetConnectionString());
-
-            return await con.QueryAsync<T>(sql, param, transaction, commandTimeout, commandType);
+            using SqlConnection sqlConnection = new SqlConnection(dbContext.Database.GetConnectionString());
+            return await sqlConnection.QueryAsync<T>(sql, param, transaction, commandTimeout, commandType);
         }
-
 
         public async static Task<int> ExecuteAsync
            (

@@ -16,7 +16,8 @@ namespace V_Tube.Application.Services
         IChannelRepository repository,
         ICloudinaryService cloudinaryService,
         IContextService contextService,
-        ISubsribeRepository subsribeRepository
+        ISubsribeRepository subsribeRepository,
+        INotificationsRepository notificationsRepository
         ) : IChannelService
     {
         public async Task<APIResponse<int>> CreateChannel(ChannelRequest model)
@@ -118,7 +119,7 @@ namespace V_Tube.Application.Services
                 };
 
                 var result = await subsribeRepository.InsertAsync(newSubscriber);
-
+               
                 if (result > 0)
                     return APIResponse<int>.SuccessResponse(result, "You have Subscribed this VTube Channel");
 
@@ -131,6 +132,21 @@ namespace V_Tube.Application.Services
                 return APIResponse<int>.SuccessResponse(res, "You have Unsubscribed this VTube Channel");
 
             return APIResponse<int>.ErrorResponse();
+        }
+
+        public async Task<APIResponse<IEnumerable<ChannelResponseForUser>>> ViewChannels()
+        {
+            var userId = Guid.Parse("861B6371-426C-4868-ACD7-F96DBE227456");
+
+            if (userId == Guid.Empty)
+                return APIResponse<IEnumerable<ChannelResponseForUser>>.ErrorResponse("Invalid user");
+
+            //var userId = contextService.GetContextId();
+
+            var channels = await repository.ViewChannels(userId);
+
+            return APIResponse<IEnumerable<ChannelResponseForUser>>.SuccessResponse(channels, "Here is list of channels");
+
         }
     }
 }

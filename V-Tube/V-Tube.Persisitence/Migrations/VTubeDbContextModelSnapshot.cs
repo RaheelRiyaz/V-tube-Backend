@@ -54,6 +54,150 @@ namespace V_Tube.Persisitence.Migrations
                     b.ToTable("Channels");
                 });
 
+            modelBuilder.Entity("V_Tube.Domain.Models.Comment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CommentedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EntityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentedBy");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.CommentReply", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CommentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RepliedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("RepliedBy");
+
+                    b.ToTable("CommentReplies");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.Likes", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CommentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsLiked")
+                        .HasColumnType("bit");
+
+                    b.Property<byte>("LikeType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<Guid>("LikedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("VideoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LikedBy");
+
+                    b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ChannelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CommentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("HasRead")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LikedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SubscribedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("VideoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChannelId");
+
+                    b.HasIndex("LikedBy");
+
+                    b.HasIndex("SubscribedBy");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("V_Tube.Domain.Models.PlayList", b =>
                 {
                     b.Property<Guid>("Id")
@@ -144,6 +288,10 @@ namespace V_Tube.Persisitence.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -165,8 +313,8 @@ namespace V_Tube.Persisitence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Duration")
-                        .HasColumnType("float");
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsPublished")
                         .HasColumnType("bit");
@@ -198,6 +346,34 @@ namespace V_Tube.Persisitence.Migrations
                     b.ToTable("Videos");
                 });
 
+            modelBuilder.Entity("V_Tube.Domain.Models.VideoViews", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DurationViewed")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("VideoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("VieweById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VieweById");
+
+                    b.ToTable("VideoViews");
+                });
+
             modelBuilder.Entity("V_Tube.Domain.Models.Channel", b =>
                 {
                     b.HasOne("V_Tube.Domain.Models.User", "User")
@@ -207,6 +383,78 @@ namespace V_Tube.Persisitence.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.Comment", b =>
+                {
+                    b.HasOne("V_Tube.Domain.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CommentedBy")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.CommentReply", b =>
+                {
+                    b.HasOne("V_Tube.Domain.Models.Comment", "Comment")
+                        .WithMany()
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("V_Tube.Domain.Models.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("RepliedBy")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.Likes", b =>
+                {
+                    b.HasOne("V_Tube.Domain.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("LikedBy")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.Notification", b =>
+                {
+                    b.HasOne("V_Tube.Domain.Models.Channel", "Channel")
+                        .WithMany()
+                        .HasForeignKey("ChannelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("V_Tube.Domain.Models.User", "Likes")
+                        .WithMany()
+                        .HasForeignKey("LikedBy");
+
+                    b.HasOne("V_Tube.Domain.Models.User", "UserSubscribed")
+                        .WithMany()
+                        .HasForeignKey("SubscribedBy");
+
+                    b.HasOne("V_Tube.Domain.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Channel");
+
+                    b.Navigation("Likes");
+
+                    b.Navigation("User");
+
+                    b.Navigation("UserSubscribed");
                 });
 
             modelBuilder.Entity("V_Tube.Domain.Models.PlayList", b =>
@@ -254,6 +502,17 @@ namespace V_Tube.Persisitence.Migrations
                     b.Navigation("Channel");
 
                     b.Navigation("PlayList");
+                });
+
+            modelBuilder.Entity("V_Tube.Domain.Models.VideoViews", b =>
+                {
+                    b.HasOne("V_Tube.Domain.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("VieweById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

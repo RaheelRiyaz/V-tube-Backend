@@ -18,5 +18,10 @@ namespace V_Tube.Api.Controllers
         [HttpPost("add-to-playlist")]
         public async Task<APIResponse<int>> CreatePlayList(AddVideoToPlaylistRequest model) =>
             await service.AddVideoToPlaylist(model);
+
+
+        [HttpGet("channel/{channelId:guid}")]
+        public async Task<APIResponse<IEnumerable<PlaylistResponse>>> CheckPlaylists(Guid channelId) =>
+            await service.CheckPlaylists(channelId);
     }
 }

@@ -50,5 +50,12 @@ namespace V_Tube.Application.Services
 
             return APIResponse<int>.SuccessResponse(1);
         }
+
+        public async Task<APIResponse<IEnumerable<PlaylistResponse>>> CheckPlaylists(Guid channelId)
+        {
+            var playLists = await repository.GetAllPlaylists(channelId);
+
+            return APIResponse<IEnumerable<PlaylistResponse>>.SuccessResponse(playLists, $"This Channel have {playLists.Count()} playlists");
+        }
     }
 }

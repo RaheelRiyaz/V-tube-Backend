@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\localRepository\\V-tube-Backend\\V-Tube\\V-Tube.Api\\wwwroot\\Files\\3698047-uhd_3840_2160_15fps.mp4",
+      "PackagePath": "staticwebassets\\Files\\3698047-uhd_3840_2160_15fps.mp4"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.V-Tube.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.V-Tube.Api.props",
+      "PackagePath": "build\\V-Tube.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.V-Tube.Api.props",
+      "PackagePath": "buildMultiTargeting\\V-Tube.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.V-Tube.Api.props",
+      "PackagePath": "buildTransitive\\V-Tube.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

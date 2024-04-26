@@ -16,5 +16,6 @@ namespace V_Tube.Application.Abstractions.IServices
         Task<APIResponse<int>> SubscribeUnsubscribeChannel(Guid channelId);
 
         Task<APIResponse<int>> NotifyChannel(Guid channelId);
+        Task<APIResponse<IEnumerable<ChannelResponseForUser>>> ViewChannels();
     }
 }

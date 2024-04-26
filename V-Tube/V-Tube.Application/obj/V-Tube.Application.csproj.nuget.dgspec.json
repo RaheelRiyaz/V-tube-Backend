@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[1.26.2, )"
             },
+            "MediaInfo.DotNetWrapper": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"

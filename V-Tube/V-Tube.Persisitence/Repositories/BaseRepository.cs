@@ -19,7 +19,7 @@ namespace V_Tube.Persisitence.Repositories
         public BaseRepository(VTubeDbContext dbContext)
         {
             this.dbContext = dbContext;
-            this.db_set = dbContext.Set<T>();
+            db_set = dbContext.Set<T>();
         }
 
 

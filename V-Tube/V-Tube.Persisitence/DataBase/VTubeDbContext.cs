@@ -24,6 +24,11 @@ namespace V_Tube.Persisitence.DataBase
         public DbSet<PlayList> PlayLists { get; set; } = null!;
         public DbSet<Video> Videos { get; set; } = null!;
         public DbSet<Subscriber> Subscribers { get; set; } = null!;
+        public DbSet<Notification> Notifications { get; set; } = null!;
+        public DbSet<Comment> Comments { get; set; } = null!;
+        public DbSet<Likes> Likes { get; set; } = null!;
+        public DbSet<CommentReply> CommentReplies { get; set; } = null!;
+        public DbSet<VideoViews> VideoViews { get; set; } = null!;
         #endregion Database Tables
     }
 }

@@ -11,12 +11,17 @@ namespace V_Tube.Application.DI_Container
 {
     public static class AssemblyReference
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services,string webrootPath)
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IChannelService, ChannelService>();
             services.AddScoped<IPlaylistService, PlaylistService>();
             services.AddScoped<IVideosService, VideosService>();
+            services.AddScoped<INotificationsService, NotificationsService>();
+            services.AddScoped<IVideoViewService, VideoViewsService>();
+            services.AddScoped<ICommentsService, CommentsService>();
+            services.AddScoped<ILikeService, LikeService>();
+            services.AddSingleton<IStorageService>(new StorageService(webrootPath));
             return services;
         }
     }

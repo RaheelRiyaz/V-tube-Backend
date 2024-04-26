@@ -12,6 +12,7 @@ namespace V_Tube.Domain.Models
         public Guid ChannelId { get; set; }
         public string Url { get; set; } = null!;
         public string Title { get; set; } = null!;
+        public int Duration { get; set; } 
 
 
 

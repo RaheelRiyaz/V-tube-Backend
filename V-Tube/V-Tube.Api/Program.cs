@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApiServices(builder.Configuration)
     .AddPersisitenceServices(builder.Configuration)
     .AddInfraStructureServices(builder.Configuration).
-    AddApplicationServices();
+    AddApplicationServices(builder.Environment.WebRootPath);
 var app = builder.Build();
 app.UseExceptionHandler(_=>{ });
 // Configure the HTTP request pipeline.

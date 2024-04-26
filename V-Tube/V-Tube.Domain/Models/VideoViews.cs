@@ -11,17 +11,17 @@ namespace V_Tube.Domain.Models
     public class VideoViews : BaseEntity
     {
         public Guid VideoId { get; set; }
-        public Guid UserId { get; set; }
-        public decimal DurationViewed { get; set; }
+        public Guid VieweById { get; set; }
+        public int DurationViewed { get; set; }
 
 
 
 
         #region Navigational Properties
        /* [ForeignKey(nameof(VideoId))]
-        public Video Video { get; set; } = null!;
+        public Video Video { get; set; } = null!;*/
 
-        [ForeignKey(nameof(UserId))]*/
+        [ForeignKey(nameof(VieweById))]
         public User User { get; set; } = null!;
         #endregion Navigational Properties
 

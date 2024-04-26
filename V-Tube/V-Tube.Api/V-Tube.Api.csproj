@@ -24,4 +24,8 @@
     <ProjectReference Include="..\V-Tube.Persisitence\V-Tube.Persisitence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

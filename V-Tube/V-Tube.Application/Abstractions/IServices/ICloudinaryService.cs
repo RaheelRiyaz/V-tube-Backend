@@ -11,6 +11,7 @@ namespace V_Tube.Application.Abstractions.IServices
     public interface ICloudinaryService
     {
         Task<RawUploadResult?> UploadFileOnCloudinary(IFormFile file);
+        Task<(RawUploadResult?,TimeSpan?)> UploadVideoFileOnCloudinary(IFormFile file);
         Task<List<RawUploadResult>> UploadFilesOnCloudinary(IFormFileCollection files);
     }
 }

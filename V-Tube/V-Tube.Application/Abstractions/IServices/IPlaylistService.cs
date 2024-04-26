@@ -12,5 +12,6 @@ namespace V_Tube.Application.Abstractions.IServices
     {
         Task<APIResponse<int>> CreatePlayList(PlaylistRequest model); 
         Task<APIResponse<int>> AddVideoToPlaylist(AddVideoToPlaylistRequest model); 
+        Task<APIResponse<IEnumerable<PlaylistResponse>>> CheckPlaylists(Guid channelId);
     }
 }

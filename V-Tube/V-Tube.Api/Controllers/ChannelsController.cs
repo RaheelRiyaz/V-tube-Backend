@@ -23,5 +23,9 @@ namespace V_Tube.Api.Controllers
         [HttpGet("toggle-notify/{channelId}")]
         public async Task<APIResponse<int>> NotifyChannel(Guid channelId) =>
             await service.NotifyChannel(channelId);
+
+        [HttpGet]
+        public async Task<APIResponse<IEnumerable<ChannelResponseForUser>>> ViewChannels() =>
+            await service.ViewChannels();
     }
 }

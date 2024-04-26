@@ -149,3 +149,6 @@ D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Api\bin\Debug\net8.0\V-Tube.Infr
 D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Api\bin\Debug\net8.0\V-Tube.Infrastructure.pdb
 D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Api\bin\Debug\net8.0\CloudinaryDotNet.dll
 D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Api\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Api\bin\Debug\net8.0\V-Tube.Api.staticwebassets.runtime.json
+D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Api\bin\Debug\net8.0\Xabe.FFmpeg.dll
+D:\localRepository\V-tube-Backend\V-Tube\V-Tube.Api\bin\Debug\net8.0\MediaInfo.DotNetWrapper.dll

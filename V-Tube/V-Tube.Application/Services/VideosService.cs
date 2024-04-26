@@ -11,42 +11,63 @@ using V_Tube.Domain.Models;
 
 namespace V_Tube.Application.Services
 {
-    public class VideosService 
+    public class VideosService
         (
         IVideosRepository repository,
         IChannelRepository channelRepository,
-        ICloudinaryService cloudinaryService
-        ): IVideosService
+        ICloudinaryService cloudinaryService,
+        IContextService contextService,
+        ISubsribeRepository subsribeRepository
+        ) : IVideosService
     {
+        public async Task<APIResponse<IEnumerable<VideoDisplayResponse>>> FetchDisplayVideos(VideoFilter model)
+        {
+            //var userId = contextService.GetContextId();
+            var userId = Guid.Parse("861B6371-426C-4868-ACD7-F96DBE227456");
+
+            var hasUserSubscribedToAnyChannel = await subsribeRepository.ExistsAsync(_=>_.UserId == userId);
+
+            var videos = await repository.GetDisplayVideos(model, userId,hasUserSubscribedToAnyChannel);
+
+            return APIResponse<IEnumerable<VideoDisplayResponse>>.SuccessResponse(videos);
+        }
+
         public async Task<APIResponse<int>> UploadVideo(VideoRequest model)
         {
+            if(string.IsNullOrEmpty(model.Title.Trim()) || string.IsNullOrEmpty(model.Description.Trim()))
+                    return APIResponse<int>.ErrorResponse("Video title or description is invalid");
+
             var channelExists = await channelRepository.ExistsAsync(_ => _.Id == model.ChannelId);
 
             if (!channelExists)
                 return APIResponse<int>.ErrorResponse("Channel is not found");
 
+
+            var (CLODUINARY_Video_RESPONSE,duration) = await cloudinaryService.UploadVideoFileOnCloudinary(model.Video);
+
+            if (CLODUINARY_Video_RESPONSE is null)
+                return APIResponse<int>.ErrorResponse("Couldn't upload video please try again later");
+
             var CLODUINARY_Thumbnail_RESPONSE = await cloudinaryService.UploadFileOnCloudinary(model.Thumbnail);
 
-            var CLODUINARY_Video_RESPONSE = await cloudinaryService.UploadFileOnCloudinary(model.Video);
+            if (CLODUINARY_Thumbnail_RESPONSE is null)
+                return APIResponse<int>.ErrorResponse("Couldn't upload thumbnail please try again later");
 
-            if (CLODUINARY_Thumbnail_RESPONSE is null || CLODUINARY_Video_RESPONSE is null)
-                return APIResponse<int>.ErrorResponse("Couldn't upload file please try again later");
+            var video = new SPVideoUploadRequest
+                (
+                model.ChannelId,
+                model.PlayListId ?? null,
+                model.Title,
+                model.Description,
+                Convert.ToString(CLODUINARY_Thumbnail_RESPONSE.Url)!,
+                0,
+                Convert.ToString(CLODUINARY_Video_RESPONSE.Url)!
+                );
 
-            var video = new Video 
-            {
-                ChannelId = model.ChannelId,
-                Description = model.Description,
-                Title = model.Title,
-                Thumbnail = Convert.ToString(CLODUINARY_Thumbnail_RESPONSE.Url)!,
-                Url = Convert.ToString(CLODUINARY_Video_RESPONSE.Url)!,
-                Duration = Convert.ToDouble(CLODUINARY_Video_RESPONSE.Bytes),
-                PlayListId = model.PlayListId ?? null,
-            };
+            var result = await repository.UploadVideoAndNotifySubscribers(video);
 
-            var result = await repository.InsertAsync(video);
-
-            if(result > 0)
-            return APIResponse<int>.SuccessResponse(result,"Video has been uploaded succesfully");
+            if (result > 0)
+                return APIResponse<int>.SuccessResponse(result, "Video has been uploaded succesfully");
 
             return APIResponse<int>.ErrorResponse();
         }

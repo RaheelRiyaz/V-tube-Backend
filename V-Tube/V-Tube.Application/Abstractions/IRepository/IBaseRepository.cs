@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using V_Tube.Application.DTO;
 
 namespace V_Tube.Application.Abstractions.IServices
 {

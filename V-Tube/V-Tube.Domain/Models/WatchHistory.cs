@@ -8,6 +8,6 @@ namespace V_Tube.Domain.Models
 {
     public class WatchHistory : WatchLater
     {
-        public double DurationViewed { get; set; }
+        public int DurationViewed { get; set; }
     }
 }
