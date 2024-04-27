@@ -49,7 +49,7 @@ namespace V_Tube.Application.DTO
         public int TotalLikes { get; set; }
         public int TotalDislikes { get; set; }
         public DateTime CreatedAt { get; set; }
-        public bool HasUserliked { get; set; }
+        public bool? HasUserliked { get; set; }
     }
 
 

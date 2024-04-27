@@ -28,10 +28,10 @@ namespace V_Tube.Persisitence.Repositories
                                                 END AS TimeAgo,
 										EntityId AS VideoId,
 										CASE WHEN
-										EXISTS(SELECT Id FROM Likes WHERE CommentId = C.Id AND  LikedBy = @userId)
-										THEN 1
-										ELSE 0
-										END AS HasUserLiked,
+												EXISTS(SELECT Id FROM Likes WHERE CommentId = C.Id AND  LikedBy = @userId)
+												THEN (SELECT IsLiked FROM Likes WHERE CommentId = C.Id AND  LikedBy = @userId)
+												ELSE NULL
+												END AS HasUserLiked,
 										(SELECT COUNT(Id) FROM CommentReplies WHERE CommentId = C.Id) AS Replies,
 										[Message],UserName AS Commenter
 										FROM Comments C

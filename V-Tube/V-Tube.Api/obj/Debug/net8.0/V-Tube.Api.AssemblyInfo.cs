@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("V-Tube.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1431b03887b6b180995ed41edd4538cc6239724b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28ec36f5a3af851e31dde6496041fec2e6a78e05")]
 [assembly: System.Reflection.AssemblyProductAttribute("V-Tube.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("V-Tube.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

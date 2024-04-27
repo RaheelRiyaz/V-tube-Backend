@@ -15,5 +15,6 @@ namespace V_Tube.Application.Abstractions.IServices
         Task<APIResponse<int>> AddComment(CommentRequest model);
         Task<APIResponse<int>> AddReplyToComment(ReplyCommentRequest model);
         Task<APIResponse<IEnumerable<CommentResponse>>> ViewCommentsByVideoId(Guid videoId);
+        Task<APIResponse<IEnumerable<CommentReplyResponse>>> FetchCommentReplies(Guid commentId);
     }
 }

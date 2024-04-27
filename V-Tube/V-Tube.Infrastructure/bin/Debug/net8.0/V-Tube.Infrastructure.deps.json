@@ -864,6 +864,7 @@
           "BCrypt.Net-Core": "1.6.0",
           "CloudinaryDotNet": "1.26.2",
           "MediaInfo.DotNetWrapper": "1.0.7",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1",
           "V-Tube.Domain": "1.0.0"

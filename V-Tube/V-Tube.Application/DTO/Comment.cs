@@ -28,7 +28,7 @@ namespace V_Tube.Application.DTO
         public string Message { get; set; } = null!;
         public string Commenter { get; set; } = null!;
         public int Replies { get; set; }
-        public bool HasUserLiked { get; set; }
+        public bool? HasUserLiked { get; set; }
     }
 
     public record ReplyCommentRequest
@@ -36,4 +36,15 @@ namespace V_Tube.Application.DTO
         Guid CommentId,
         string Message
         );
+
+    public class CommentReplyResponse
+    {
+        public Guid Id { get; set; }
+        public Guid CommentId { get; set; }
+        public Guid RepliedBy { get; set; }
+        public string TimeAgo { get; set; } = null!;
+        public string Message { get; set; } = null!;
+        public string Replier { get; set; } = null!;
+        public bool? HasUserLiked { get; set; }
+    }
 }

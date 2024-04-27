@@ -24,5 +24,10 @@ namespace V_Tube.Api.Controllers
         [HttpPost("reply-comment")]
         public async Task<APIResponse<int>> AddReplyToComment(ReplyCommentRequest model) =>
             await commentsService.AddReplyToComment(model);
+
+
+        [HttpGet("replies/{commentId:guid}")]
+        public async Task<APIResponse<IEnumerable<CommentReplyResponse>>> FetchCommentReplies(Guid commentId) =>
+            await commentsService.FetchCommentReplies(commentId);
     }
 }

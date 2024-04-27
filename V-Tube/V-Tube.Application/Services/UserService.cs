@@ -82,5 +82,33 @@ namespace V_Tube.Application.Services
 
             return APIResponse<int>.ErrorResponse();
         }
+
+
+        public async Task<APIResponse<TokenResponse>> RefreshToken(RefreshTokenRequest model)
+        {
+            var user = await repository.FirstOrDefaultAsync(_ => _.RefreshToken == model.RefreshToken);
+
+            if (user is null)
+                return APIResponse<TokenResponse>.ErrorResponse("Invalid Token");
+
+            var isTokenExpired = AppEncryption.IsTokenExpired(user.RefreshToken!);
+
+            if (isTokenExpired)
+                return APIResponse<TokenResponse>.ErrorResponse("Refresh Token has been expired please login again");
+
+            user.RefreshToken = service.GenerateRefreshToken(user.Id);
+
+            var res = await repository.UpdateAsync(user);
+
+            if (res > 0)
+            {
+                var accessToken = service.GenerateAccessToken(user);
+                var response = new TokenResponse(accessToken, user.RefreshToken);
+
+                return APIResponse<TokenResponse>.SuccessResponse(response, "Token has been refreshed");
+            }
+
+            return APIResponse<TokenResponse>.ErrorResponse();
+        }
     }
 }

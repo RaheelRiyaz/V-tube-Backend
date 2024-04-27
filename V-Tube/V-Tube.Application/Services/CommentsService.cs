@@ -59,6 +59,15 @@ namespace V_Tube.Application.Services
                 APIResponse<int>.ErrorResponse();
         }
 
+        public async Task<APIResponse<IEnumerable<CommentReplyResponse>>> FetchCommentReplies(Guid commentId)
+        {
+            //var userId = contextService.GetContextId();
+            var userId = Guid.Parse("861B6371-426C-4868-ACD7-F96DBE227456");
+            var replies = await commentRepliesRepository.FetchRepliesByCommentId(commentId,userId);
+
+            return APIResponse<IEnumerable<CommentReplyResponse>>.SuccessResponse(replies, "Comment replies fetched");
+        }
+
         public async Task<APIResponse<IEnumerable<CommentResponse>>> ViewCommentsByVideoId(Guid videoId)
         {
             //var userId = contextService.GetContextId();

@@ -17,7 +17,7 @@ namespace V_Tube.Persisitence.Repositories
     {
 
         #region BaseQuery
-        private const string baseQuery = $@" SELECT 
+        private const string baseQuery = $@"  SELECT 
                                             VideoId,
                                             ChannelId,
                                             PlayListId,
@@ -58,8 +58,8 @@ namespace V_Tube.Persisitence.Repositories
                                                 ProfileUrl,
 												CASE WHEN
 												EXISTS(SELECT Id FROM Likes WHERE VideoId = V.Id AND  LikedBy = '861B6371-426C-4868-ACD7-F96DBE227456')
-												THEN 1
-												ELSE 0
+												THEN (SELECT IsLiked FROM Likes WHERE VideoId = V.Id AND  LikedBy = '861B6371-426C-4868-ACD7-F96DBE227456')
+												ELSE NULL
 												END AS HasUserLiked,
 												(
 												(SELECT COUNT(Id) FROM Comments WHERE EntityId = V.Id)
@@ -80,7 +80,7 @@ namespace V_Tube.Persisitence.Repositories
                                                 Videos V
                                             INNER JOIN 
                                                 Channels C ON C.Id = V.ChannelId
-                                        ) AS SubQuery ";
+                                        ) AS SubQuery";
         #endregion BaseQuery
 
         public VideosRepository(VTubeDbContext context) : base(context)

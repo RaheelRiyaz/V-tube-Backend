@@ -23,5 +23,10 @@ namespace V_Tube.Api.Controllers
         [HttpGet("logout")]
         public async Task<APIResponse<int>> Logout() =>
             await service.Logout();
+
+
+        [HttpPost("refresh-token")]
+        public async Task<APIResponse<TokenResponse>> RefreshToken(RefreshTokenRequest model) =>
+         await service.RefreshToken(model);
     }
 }

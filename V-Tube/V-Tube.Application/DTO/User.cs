@@ -19,4 +19,15 @@ namespace V_Tube.Application.DTO
         string AccessToken,
         string RefreshToken
         );
+
+    public record TokenResponse
+        (
+        string AccessToken,
+        string RefreshToken
+        );
+
+    public record RefreshTokenRequest
+        (
+        string RefreshToken
+        );
 }
